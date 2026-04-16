@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environs - Combined Header</title>
+    <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icon (optional buat social media) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <head>
+  
+  
+   
+    <style>
+        body { margin: 0; padding: 0; background-color: #888; } /* Background abu-abu untuk simulasi hero */
+
+        /* WRAPPER UTAMA: Menggabungkan Topbar & Navbar */
+        .header-wrapper {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* CONTAINER BOXED: Membungkus topbar & navbar agar lebarnya sama */
+        .header-container {
+            max-width: 1140px; /* Lebar 'dikecil' seperti di foto */
+            margin: 0 auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* TOPBAR HIJAU */
+        .top-bar {
+            background-color: #315f0e; /* Hijau tua */
+            color: #fff;
+            font-size: 13px;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0; /* Akan diatur via header-container jika ingin lengkung */
+        }
+
+        /* NAVBAR PUTIH */
+        .navbar-custom {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Gaya Menu & Tombol */
+        .nav-link { color: #333 !important; font-weight: 500; margin: 0 10px; text-decoration: none; }
+        .navbar-brand { font-weight: bold; color: #28a745 !important; font-size: 24px; }
+        .btn-donate { background-color: #28a745; color: white; border: none; padding: 8px 20px; border-radius: 5px; font-weight: bold; }
+
+        /* LOGIKA SAAT DI-SCROLL (FLUID / FULL WIDTH) */
+        .header-wrapper.scrolled {
+            position: fixed;
+            top: 0;
+        }
+
+        .header-wrapper.scrolled .header-container {
+            max-width: 100% !important; /* Jadi full kesamping */
+        }
+
+        /* Penyeimbang agar konten tidak kaget saat header jadi fixed */
+        .hero-spacer { height: 100vh; display: flex; align-items: center; justify-content: center; color: white; }
+
+        .social-icons {
+  display: flex;
+  gap: 15px; /* Sesuaikan angka ini untuk mengatur lebar jarak */
+  align-items: center;
+}
+
+ body { font-family: 'Inter', sans-serif; background-color: #fff; }
+
+        /* 1. BINGKAI DEKORATIF (Efek Hijau di Belakang Gambar) */
+        .img-container {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 30px;
+            padding-right: 30px;
+        }
+        /* Kotak hijau di belakang */
+        .img-container::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 90%;
+            height: 90%;
+            background-color: #5bb377; /* Warna Hijau Sesuai Gambar */
+            z-index: 1;
+        }
+        .img-container img {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: 100%;
+            height: auto;
+            /* Jika ingin sudut sedikit melengkung seperti di gambar */
+            border-radius: 2px;
+        }
+
+        /* 2. GAYA NAVIGASI TAB (KOTAK & FLAT) */
+        .custom-tabs .nav-link {
+            border: none;
+            border-radius: 0 !important; /* Membuat kotak sempurna */
+            background-color: #f1f3f2;
+            color: #555;
+            font-weight: 600;
+            margin-right: 5px;
+            padding: 10px 25px;
+            font-size: 14px;
+        }
+        .custom-tabs .nav-link.active {
+            background-color: #2d5a27 !important; /* Warna hijau gelap saat aktif */
+            color: #fff !important;
+        }
+
+        /* 3. TIPOGRAFI & ELEMEN LAIN */
+        .subtitle {
+            color: #5bb377;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .main-title {
+            font-weight: 800;
+            color: #164122;
+            line-height: 1.2;
+        }
+        .description {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .tab-title {
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+        }
+        .btn-read-more {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 25px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .btn-read-more:hover { background-color: #4a9462; color: #fff; }
+
+        :root {
+            --eco-green: #5bb377;
+            --dark-green: #2d5a27;
+        }
+
+        body { background-color: #f8f9fa; font-family: sans-serif; }
+
+        .section-title { color: var(--eco-green); font-size: 14px; font-weight: bold; letter-spacing: 1px; }
+        .main-heading { font-weight: 800; color: #333; margin-bottom: 50px; }
+
+        /* Card Container */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        /* Image Styling & Hover Effect */
+        .feature-img-wrapper {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+        .feature-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .feature-card:hover img {
+            transform: scale(1.1); /* Efek Zoom */
+        }
+
+        /* Overlay Text on Image */
+        .img-overlay-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            z-index: 2;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Dark overlay agar teks terbaca */
+        .feature-img-wrapper::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        }
+
+        /* Description below image */
+        .feature-desc {
+            font-size: 13px;
+            color: #777;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+
+        .btn-green {
+            background-color: var(--eco-green);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 5px;
+            border: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-green:hover { background-color: var(--dark-green); color: white; }
+
+         /* 1. HEADER TEXT */
+        .donation-subtitle { color: #5bb377; font-weight: bold; font-size: 13px; letter-spacing: 1px; }
+        .main-heading { font-weight: 700; color: #333; margin-top: 10px; }
+
+        /* 2. AREA KARTU DENGAN MARGIN TOP NEGATIF */
+        .causes-container {
+            margin-top: -80px; /* Efek menonjol ke atas */
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 3. STYLING KARTU */
+        .cause-card {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            border-radius: 4px; /* Sedikit melengkung sesuai gambar */
+            height: 400px; /* Tinggi kartu */
+            margin-bottom: 20px;
+        }
+
+        /* Gambar Background */
+        .cause-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            transition: transform 0.5s ease;
+        }
+        .cause-card:hover .cause-img { transform: scale(1.1); }
+
+        /* Overlay Gelap agar teks terbaca */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0.2) 60%);
+            z-index: 1;
+        }
+
+        /* Konten Teks di Dalam Kartu */
+        .cause-content {
+            position: absolute;
+            bottom: 0;
+            padding: 30px 20px;
+            color: white;
+            z-index: 2;
+            text-align: left;
+        }
+        .tag { color: #5bb377; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .cause-title { font-weight: 700; font-size: 22px; line-height: 1.2; margin-bottom: 10px; }
+        .cause-text { font-size: 12px; color: #ccc; line-height: 1.5; margin-bottom: 0; }
+
+        /* 4. TOMBOL ALL DONATION */
+        .btn-all-donation {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 40px;
+            transition: 0.3s;
+        }
+        .btn-all-donation:hover {
+            background-color: #4a9462;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(91, 179, 119, 0.4);
+        }
+
+        body {
+    margin: 0;
+}
+
+/* SECTION */
+.achievement {
+    background: url("jabattangan.jpg") center/cover no-repeat;
+    padding: 120px 0;
+    position: relative;
+    color: white;
+}
+
+.achievement::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+/* CONTENT */
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* CARD */
+.box {
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+    background: transparent;
+}
+
+/* ICON */
+.icon i {
+    font-size: 45px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* TITLE */
+.box h5 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* COUNTER BOX (yang kotak putus-putus) */
+.counter-box {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px dashed rgba(255,255,255,0.5);
+    border-radius: 5px;
+}
+
+/* COUNTER */
+.counter {
+    font-size: 28px;
+    color: #00ffae;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.btn-custom {
+    margin-top: 40px;
+    background: #28a745;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-custom:hover {
+    background: #218838;
+}
+.carousel-indicators {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth; /* Supaya pas diklik, naiknya halus, tidak langsung loncat */
+}
+
+.back-to-top {
+    position: fixed; /* Membuat tombol tetap di posisi yang sama saat layar di-scroll */
+    bottom: 30px;    /* Jarak dari bawah */
+    right: 30px;     /* Jarak dari kanan */
+    width: 40px;
+    height: 40px;
+    background-color: #28a745; /* Warna hijau sesuai gambar kamu */
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px; /* Membuat sudut sedikit melengkung */
+    font-size: 20px;
+    z-index: 999;    /* Pastikan tombol ada di lapisan paling atas */
+    transition: background-color 0.3s;
+}
+
+.back-to-top:hover {
+    background-color: #3e7a36; /* Warna saat mouse diarahkan ke tombol */
+}
+
+/* Mencuci semua kotak biar ukurannya sama rata */
+.achievement .box {
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Garis putih tipis */
+    padding: 20px 10px;      /* Jarak dalam kotak */
+    border-radius: 10px;     /* Sudut melengkung */
+    min-height: 180px;       /* BIAR TINGGI SEMUA KOTAK SAMA */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Konten di tengah secara vertikal */
+    align-items: center;     /* Konten di tengah secara horizontal */
+    transition: 0.3s;
+}
+
+/* Biar ikon & teks nggak kegedean */
+.achievement .box .icon i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.achievement .box h5 {
+    font-size: 0.9rem;      /* Perkecil tulisan judul (Beavers Saved, dll) */
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+/* Kotak angka yang ada garis putus-putus */
+.achievement .counter-box {
+    border: 1px dashed rgba(255, 255, 255, 0.5); 
+    padding: 5px 15px;
+    font-weight: bold;
+    color: #28a745;         /* Warna hijau angka */
+}
+
+ body {
+      background-color: #f8f9fa;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-weight: bold;
+    }
+    .card {
+      border: none;
+      overflow: hidden;
+    }
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .donate-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 5px;
+    }
+    .card-body {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .card-body h5 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .card-body p {
+      font-size: 14px;
+    }
+    .btn-read {
+      background-color: white;
+      color: #2e7d32;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    body {
+  background: #f5f5f5;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.event-card {
+  border: none;
+  overflow: hidden;
+}
+
+.event-img {
+  position: relative;
+}
+
+.event-img img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* body */
+.event-body {
+  background: #2e7d32;
+  color: white;
+  padding: 20px;
+}
+
+.event-body h5 {
+  font-weight: bold;
+}
+
+.event-meta {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.btn-read {
+  background: white;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+/* arrow button */
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2e7d32;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+ body {
+      background-color: #f5f5f5;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #6c757d;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .main-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .card-custom {
+      border: none;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .card-img-overlay-custom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      color: white;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    }
+
+    .card-body h6 {
+      font-weight: 600;
+    }
+
+    .btn-custom {
+      background-color: #28a745;
+      color: white;
+      border-radius: 0;
+      font-size: 14px;
+    }
+
+    .btn-custom:hover {
+      background-color: #218838;
+    }
+
+    .card-img-overlay-custom span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-img-overlay-custom i {
+  font-size: 13px;
+}
+ body {
+      background: #f5f5f5;
+    }
+
+
+    .section-title {
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .main-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .card-custom {
+      border: none;
+      background: #fff;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-custom img {
+      transition: 0.3s;
+    }
+
+    .card-custom:hover img {
+      transform: scale(1.1);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      font-size: 12px;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    }
+
+    .overlay i {
+      margin-right: 4px;
+    }
+
+    .overlay .right i {
+      margin-left: 10px;
+    }
+
+    .card-body h6 {
+      color: #28a745;
+      font-weight: 600;
+    }
+
+    .card-body p {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .btn-success {
+      border-radius: 0;
+      font-size: 13px;
+    }
+
+    .title-green {
+  color: #28a745;
+}
+
+body {
+  background: #f5f5f5;
+}
+
+/* HEADER */
+.sub-title {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+.main-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+/* CARD */
+.card-news {
+  border: 1px solid #eee;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.card-news:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE */
+.card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  transition: 0.3s;
+}
+
+.card-news:hover img {
+  transform: scale(1.1);
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.overlay i {
+  margin-right: 4px;
+}
+
+.overlay .right i {
+  margin-left: 10px;
+}
+
+/* TEXT */
+.card-body h6 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card-body p {
+  font-size: 12px;
+  color: #777;
+}
+
+/* BUTTON */
+.btn-read {
+  background: #28a745;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 0;
+}
+
+.btn-read:hover {
+  background: #218838;
+}
+
+.card-news {
+  background: #ffffff !important;
+}
+
+/* PAKSA GAMBAR GA KENA HIJAU */
+.card-img-wrapper {
+  background: #ffffff !important;
+}
+
+/* PASTIIN GAMBAR KELIHATAN */
+.card-img-wrapper img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* BAGIAN HIJAU CUMA DI BAWAH */
+.card-content {
+  background: #f5f5f5 !important;
+  color: #fff;
+  padding: 20px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* JUDUL BESAR */
+.main-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* JUDUL CARD */
+.card-content h6 {
+  font-weight: 600;
+}
+
+/* DESKRIPSI */
+.card-content p {
+  font-weight: 300;
+}
+
+.card-img-wrapper {
+  position: relative;
+}
+
+/* KIRI ATAS */
+.overlay-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 12px;
+}
+
+/* KANAN ATAS */
+.overlay-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.overlay-right i {
+  margin-left: 8px;
+}
+
+.overlay-left,
+.overlay-right {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+.overlay-left {
+  bottom: 10px !important;
+  top: auto !important;
+}
+
+.overlay-right {
+  bottom: 10px !important;
+  top: auto !important;
+}
+#recent-causes {
+      padding: 100px 0;
+      background: #fff;
+    }
+
+    .cause-card {
+      border-radius: 14px;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .cause-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.15);
+    }
+
+    .cause-img-wrap {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .cause-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .cause-card:hover .cause-img-wrap img {
+      transform: scale(1.07);
+    }
+
+    .donate-now-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .cause-meta {
+      display: flex;
+      gap: 10px;
+      font-size: 0.7rem;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .cause-meta span { display: flex; align-items: center; gap: 4px; }
+
+    .cause-card .card-body {
+      padding: 22px;
+    }
+
+    .cause-card h5 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .progress {
+      height: 6px;
+      border-radius: 3px;
+      background: #e9ecef;
+      margin: 14px 0 6px;
+    }
+
+    .progress-bar {
+      background: var(--green);
+      border-radius: 3px;
+    }
+
+    .raised-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--gray);
+    }
+
+    .raised-info strong { color: var(--green); }
+
+    .btn-read-more {
+      background: transparent;
+      color: var(--green);
+      border: 2px solid var(--green);
+      border-radius: 7px;
+      padding: 8px 24px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: background 0.25s, color 0.25s;
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    .btn-read-more:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+
+    .section-title { color: #2d5a27; font-weight: bold; letter-spacing: 1px; }
+        .section-subtitle { font-weight: bold; max-width: 600px; margin: 0 auto; color: #333; }
+
+        /* Kustomisasi Card */
+        .event-card { border: none; border-radius: 0; overflow: hidden; background-color: #2d5a27; color: white; height: 100%; }
+        .event-image-wrapper { position: relative; }
+        
+        /* Label Tanggal di Pojok Gambar */
+        .date-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+
+        .card-body { padding: 1.5rem; }
+        .event-meta { font-size: 0.8rem; margin-bottom: 15px; opacity: 0.9; }
+        .event-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 10px; line-height: 1.4; }
+        .event-text { font-size: 0.85rem; line-height: 1.6; opacity: 0.85; margin-bottom: 20px; }
+        
+        .btn-read-more {
+            background-color: #f1f1f1;
+            color: #2d5a27;
+            border-radius: 0;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border: none;
+        }
+        .btn-read-more:hover { background-color: #e2e2e2; color: #1e3d1a; }
+
+        .ln-section-wrapper {
+            padding: 60px 0;
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .ln-header-group {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .ln-tagline {
+            color: #5cb85c;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .ln-main-title {
+            font-weight: 800;
+            font-size: 2rem;
+            color: #2c3e50;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.3;
+        }
+
+        /* Container Kartu */
+        .ln-card-item {
+            border: none;
+            background: #fff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .ln-card-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Bagian Gambar */
+        .ln-img-container {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* Aspect Ratio 4:3 */
+            overflow: hidden;
+        }
+
+        .ln-img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay Info di Gambar */
+        .ln-img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: #ffffff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            align-items: center;
+        }
+
+        /* Konten Teks */
+        .ln-content-body {
+            padding: 20px 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ln-category-label {
+            color: #5cb85c;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            text-decoration: none;
+        }
+
+        .ln-post-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .ln-post-excerpt {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Tombol Spesifik */
+        .ln-btn-action {
+            background-color: #5cb85c;
+            color: #ffffff !important;
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            width: fit-content;
+            margin-top: auto;
+            border: none;
+            transition: background 0.3s;
+        }
+
+        .ln-btn-action:hover {
+            background-color: #4cae4c;
+        }
+
+    /* ─── GALLERY ─── */
+    #gallery { background: #fff; padding: 90px 0; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 250px 250px; gap: 6px; }
+    .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-overlay {
+      position: absolute; inset: 0; background: rgba(58,158,78,.75);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s; color: #fff;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay i { font-size: 2rem; margin-bottom: 6px; }
+    .gallery-overlay span { font-size: .8rem; font-weight: 600; }
+
+        /* ─── VOLUNTEER ─── */
+    #volunteer { background: var(--light-bg); padding: 90px 0; }
+    .volunteer-left { background: #fff; border-radius: 10px; padding: 40px; }
+    .vol-check li { display: flex; gap: 10px; margin-bottom: 8px; font-size: .9rem; }
+    .vol-check li i { color: var(--green); margin-top: 3px; }
+    .vol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .vol-card { position: relative; border-radius: 8px; overflow: hidden; cursor: pointer; }
+    .vol-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .vol-card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,.55); color: #fff; padding: 10px 12px;
+    }
+    .vol-card-info h6 { margin: 0; font-size: .85rem; font-weight: 700; }
+    .vol-card-info small { font-size: .7rem; color: #ccc; }
+    .vol-social {
+      position: absolute; inset: 0; background: rgba(58,158,78,.85);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .vol-card:hover .vol-social { opacity: 1; }
+    .vol-social a { color: #fff; font-size: 1.1rem; width: 34px; height: 34px; border: 2px solid rgba(255,255,255,.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .vol-social a:hover { background: #fff; color: var(--green); }
+
+
+   
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: 250px 250px;
+      gap: 0;
+    }
+
+    .item:nth-child(1){ grid-column:1; grid-row:1; }
+    .item:nth-child(4){ grid-column:1; grid-row:2; }
+    .big{ grid-column:2; grid-row:1 / span 2; }
+    .item:nth-child(3){ grid-column:3; grid-row:1; }
+    .item:nth-child(5){ grid-column:3; grid-row:2; }
+
+    .item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    /* overlay */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    /* icon */
+    .overlay i {
+      color: white;
+      font-size: 28px;
+      background: #28a745;
+      padding: 14px;
+      border-radius: 50%;
+      transform: scale(0.7);
+      transition: 0.3s;
+    }
+
+    /* text */
+    .text {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      color: white;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 0.3s;
+    }
+
+    /* hover effect */
+    .item:hover img {
+      transform: scale(1.1);
+    }
+
+    .item:hover .overlay {
+      opacity: 1;
+    }
+
+    .item:hover .overlay i {
+      transform: scale(1);
+    }
+
+    .item:hover .text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="header-wrapper" id="mainHeader">
+        <div class="header-container">
+            <!-- TOPBAR HIJAU -->
+            <div class="top-bar ">
+                <div>
+                    <span class="me-3"><i class="fas fa-envelope text-white me-2"></i>example@gmail.com</span>
+                    <span><i class="fas fa-phone text-white me-2"></i>+01234567890</span>
+                </div>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f "></i>
+                    <i class="fab fa-twitter "></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+
+            <!-- NAVBAR PUTIH (Langsung Menempel) -->
+            <nav class="navbar-custom">
+                <a class="navbar-brand " href="#">Environs</a>
+                
+                <div class="d-none d-lg-flex ms-auto align-items-center">
+                  <a class="nav-link" href="#heroCarousel">Home</a>
+                  <a class="nav-link" href="#about">About</a>
+                  <a class="nav-link" href="#services">Services</a>
+                  <a class="nav-link" href="#causes">Causes</a>
+                  <a class="nav-link" href="#events">Events</a>
+                  
+                  <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                      Pages
+                  </a>
+
+                  <ul class="dropdown-menu tab-btn-custom">
+                      <li><a class="dropdown-item" href="#blog">Blog</a></li>
+                      <li><a class="dropdown-item" href="#galery">Gallery</a></li>
+                      <li><a class="dropdown-item" href="#volunteer">Volunteers</a></li>
+                      <li><a class="dropdown-item" href="#donasi">Donation</a></li>
+                      <li><a class="dropdown-item" href="#">404 Eror</a></li>
+                  </ul>
+               </div>
+
+                    <a class="nav-link" href="#contact">Contact</a>
+                </div>
+
+                <button class="btn btn-donate">Donate Now</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Navbar Overlay -->
+<nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100 style="z-index: 10;">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3" href="#">Environs</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <!-- Tambahkan menu lainnya -->
+      </ul>
+      <a href="#" class="btn btn-success ms-lg-3 px-4">Donate Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Carousel -->
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" id="home">
+  
+  <!-- Indikator (Titik di bawah) -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  <div class="carousel-inner">
+    
+    <!-- SLIDE 1 (Active) -->
+    <div class="carousel-item active" style="height: 100vh;">
+      <div class="overlay" style="background: rgba(0,0,0,0.4); position: absolute; inset: 0; z-index: 1;"></div>
+      <img src="lingkungan.jpg" class="d-block w-100 h-100 object-fit-cover">
+      <div class="carousel-caption d-flex align-items-center h-100 text-start" style="z-index: 2;">
+         <div class="position-absolute top-50 start-50 translate-middle text-center text-white w-100">
+              <h5 class="text-uppercase">Komunitas Global</h5>
+              <h1 class="display-3 fw-bold">Aksi Nyata<br>Lingkungan</h1>
+              <p class="fs-5">
+                Bergabung dengan ribuan relawan di seluruh penjuru dunia
+              </p>
+              <a href="#" class="btn btn-success btn-lg px-4 py-2 mt-4" style="background-color: #28a745;">Donasi Sekarang</a>
+            </div>
+                  </div>
+                </div>
+
+    <!-- SLIDE 2 -->
+    <div class="carousel-item" style="height: 100vh;">
+      <div class="overlay" style="background: rgba(0,0,0,0.5); position: absolute; inset: 0; z-index: 1;"></div>
+      <img src="laut.jpg" class="d-block w-100 h-100 object-fit-cover">
+      <div class="carousel-caption d-flex align-items-center h-100 text-start" style="z-index: 2;">
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white w-100">
+              <h5 class="text-uppercase">Lestarikan Bumi</h5>
+              <h1 class="display-3 fw-bold">Laut Memberi<br>Kita Hidup</h1>
+              <p class="fs-5">
+                Laut yang lestari menjamin kehidupan yang berkelanjutan.
+              </p>
+              <a href="#" class="btn btn-success btn-lg px-4 py-2 mt-4" style="background-color: #28a745;">Donasi Sekarang</a>
+            </div>
+                  </div>
+                </div>
+
+    <!-- SLIDE 3 -->
+    <div class="carousel-item" style="height: 100vh;">
+      <div class="overlay" style="background: rgba(0,0,0,0.4); position: absolute; inset: 0; z-index: 1;"></div>
+      <img src="edukasi.jpg" class="d-block w-100 h-100 object-fit-cover">
+      <div class="carousel-caption d-flex align-items-center h-100 text-start" style="z-index: 2;">
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white w-100">
+              <h5 class="text-uppercase">Warisan Masa Depan</h5>
+              <h1 class="display-3 fw-bold">Edukasi Untuk<br>Perubahan</h1>
+              <p class="fs-5">
+               Membangun kesadaran lingkungan sejak dini melalui kelas alam.
+              </p>
+              <a href="#" class="btn btn-success btn-lg px-4 py-2 mt-4" style="background-color: #28a745;">Donasi Sekarang</a>
+            </div>
+                  </div>
+                </div>
+
+                <!-- Tombol Navigasi Panah (Opsional) -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+</div>
+
+    <section class="py-5" id="about">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            
+            <!-- SISI KIRI: GAMBAR DENGAN BINGKAI -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="img-container">
+                    <!-- Ganti source gambar dengan file kamu -->
+                    <img src="eco.jpg" alt="Eco Illustration">
+                </div>
+            </div>
+
+            <!-- SISI KANAN: TEKS & TAB -->
+            <div class="col-lg-6 ps-lg-5">
+                <span class="subtitle">ABOUT US</span>
+                <h1 class="main-title mt-2 mb-4">Tujuan Kami Adalah Menjaga Kelestarian Alam</h1>
+                <p class="description">
+                    Kami adalah organisasi yang berdedikasi untuk memulihkan ekosistem dan mengedukasi masyarakat tentang pentingnya keberlanjutan. Bersama, kita bisa menciptakan dunia yang lebih hijau untuk generasi mendatang.
+                </p>
+
+                <!-- NAVIGASI TAB -->
+                <nav>
+                    <div class="nav nav-tabs custom-tabs border-0 mt-4" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about" type="button" role="tab">About</button>
+                        <button class="nav-link" id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission" type="button" role="tab">Mission</button>
+                        <button class="nav-link" id="nav-vision-tab" data-bs-toggle="tab" data-bs-target="#nav-vision" type="button" role="tab">Vision</button>
+                    </div>
+                </nav>
+
+                <!-- KONTEN TAB -->
+                <div class="tab-content border-top mt-0 pt-3" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                        <h6 class="tab-title">TENTANG KAMI</h6>
+                        <p class="description mt-2">
+                            Mengurangi dampak pemanasan global melalui aksi penanaman hutan kembali dan kampanye pengurangan limbah plastik secara berkelanjutan.
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-mission" role="tabpanel">
+                        <h6 class="tab-title">MISI KAMI</h6>
+                        <p class="description mt-2">Mendorong perubahan positif melalui edukasi dan aksi nyata di seluruh lapisan masyarakat.</p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-vision" role="tabpanel">
+                        <h6 class="tab-title">VISI KAMI</h6>
+                        <p class="description mt-2">Menjadi penggerak utama dalam pelestarian lingkungan hidup di tingkat global.</p>
+                    </div>
+                </div>
+
+                <!-- TOMBOL -->
+                <button class="btn btn-read-more">Read More</button>
+
+                <!-- Tombol Panah -->
+                    <a href="#" class="back-to-top">
+                        <span>&#8593;</span> <!-- Ini kode untuk simbol panah atas (↑) -->
+                    </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 text-center">
+    <div class="container">
+        <p class="section-title text-uppercase">What We Do</p>
+        <h2 class="main-heading">Kontribusi Nyata Kami Untuk Menjaga<br>Kelestarian Lingkungan</h2>
+
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-3 text-start">
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="padi.jpg" alt="Card 1">
+                        <div class="img-overlay-text">Penggalangan Dana</div>
+                    </div>
+                </div>
+                <p class="feature-desc">Mengumpulkan dukungan finansial secara transparan untuk membiayai proyek penghijauan dan pemulihan lahan kritis.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3 text-start">
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="laut (2).jpg" alt="Card 2">
+                        <div class="img-overlay-text">Kemitraan Strategis</div>
+                    </div>
+                </div>
+                <p class="feature-desc">Bekerja sama erat dengan pemerintah dan sektor swasta untuk menyediakan layanan konsultasi lingkungan.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3 text-start">
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="sampah.jpg" alt="Card 3">
+                        <div class="img-overlay-text">Ekowisata Terpadu</div>
+                    </div>
+                </div>
+                <p class="feature-desc">Menyediakan tur edukasi alam yang dipandu oleh ahli profesional untuk meningkatkan kesadaran masyarakat.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3 text-start">
+                <div class="feature-card">
+                    <div class="feature-img-wrapper">
+                        <img src="lebah.jpg" alt="Card 4">
+                        <div class="img-overlay-text">Konservasi Satwa</div>
+                    </div>
+                </div>
+                <p class="feature-desc">Melindungi habitat asli hewan liar dari perburuan dan kerusakan lahan guna menjaga rantai makanan.</p>
+            </div>
+        </div>
+
+        <!-- Button Read More -->
+        <div class="mt-5">
+            <button class="btn btn-green" style="background-color: #28a745;">Read More</button>
+        </div>
+    </div>
+</section>
+
+<!-- Section Header (Bagian atas) -->
+<section class="py-5 text-center" id="services">
+    <div class="container pb-5">
+        <p class="donation-subtitle mb-0">DONATION</p>
+        <h2 class="main-heading">Uang Anda akan menyelamatkan hidup kami.</h2>
+    </div>
+</section>
+
+<!-- Section Cards (Bagian Kartu) -->
+<section class="container causes-container">
+    <div class="row">
+        
+        <!-- Kartu 1: ORGANIC -->
+        <div class="col-md-4">
+            <div class="cause-card">
+                <img src="tangantanah.jpg" class="cause-img" alt="Organic">
+                <div class="overlay"></div>
+                <div class="cause-content">
+                    <span class="tag">ORGANIC</span>
+                    <h3 class="cause-title">Bantu Kami Lebih Banyak</h3>
+                    <p class="cause-text">Melindungi lingkungan adalah tanggung jawab kita bersama untuk menjaga kelestarian alam demi kehidupan yang sehat dan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kartu 2: ECOSYSTEM -->
+        <div class="col-md-4">
+            <div class="cause-card">
+                <img src="laut (3).jpg" class="cause-img" alt="Ecosystem">
+                <div class="overlay"></div>
+                <div class="cause-content">
+                    <span class="tag">ECOSYSTEM</span>
+                    <h3 class="cause-title">Bantu Kami Lebih Banyak</h3>
+                    <p class="cause-text">Melindungi lingkungan adalah tanggung jawab kita bersama untuk menjaga kelestarian alam demi kehidupan yang sehat dan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kartu 3: RECYCLING -->
+        <div class="col-md-4">
+            <div class="cause-card">
+                <img src="gunung.jpg" class="cause-img" alt="Recycling">
+                <div class="overlay"></div>
+                <div class="cause-content">
+                    <span class="tag">RECYCLING</span>
+                    <h3 class="cause-title">Bantu Kami Lebih Banyak</h3>
+                    <p class="cause-text">Melindungi lingkungan adalah tanggung jawab kita bersama untuk menjaga kelestarian alam demi kehidupan yang sehat dan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tombol Bawah -->
+    <div class="text-center">
+        <button class="btn btn-all-donation">All Donation</button>
+    </div>
+</section> 
+<br>
+<section class="achievement text-center">
+    <div class="container content" id="donasi">
+        <h3 class="mb-3">ACHIEVEMENT</h3>
+        <p class="mb-5">
+    
+            Berhasil berkontribusi dalam kegiatan pelestarian lingkungan seperti penghijauan, 
+                pengelolaan sampah, dan kampanye kesadaran masyarakat. Melalui kolaborasi 
+                bersama relawan dan donatur, program-program kami telah menjangkau berbagai 
+                daerah untuk menciptakan ekosistem yang lebih hijau dan berkelanjutan bagi generasi mendatang.
+        </p>
+
+        <div class="row justify-content-center g-4">
+
+            <div class="col-md-2">
+                <div class="box">
+                    <div class="icon"><i class="fas fa-thumbs-up"></i></div>
+                    <h5>Beavers Saved</h5>
+                    <div class="counter-box">
+                        <span class="counter" data-target="260">0</span> +
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="box">
+                    <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h5>Funds Collected</h5>
+                    <div class="counter-box">
+                        <span class="counter" data-target="513">0</span> $
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="box">
+                    <div class="icon"><i class="fas fa-user"></i></div>
+                    <h5>Volunteer</h5>
+                    <div class="counter-box">
+                        <span class="counter" data-target="713">0</span> +
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="box">
+                    <div class="icon"><i class="fas fa-heart"></i></div>
+                    <h5>Days of Help</h5>
+                    <div class="counter-box">
+                        <span class="counter" data-target="487">0</span> +
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="btn btn-custom">Join With Us</button>
+    </div>
+</section>
+
+<script>
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+    const update = () => {
+        const target = +counter.dataset.target;
+        const count = +counter.innerText;
+
+        const increment = target / 80;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(update, 25);
+        } else {
+            counter.innerText = target;
+        }
+    };
+
+    update();
+});
+</script>
+
+<div class="container py-5" id="causes">
+  <div class="section-title">
+    <small class="text-success">RECENT CAUSES</small>
+    <h1 style="color: #0b4117;">
+  Lingkungan Membutuhkan Perlindungan Kita
+</h1>
+    <p style="color:#0b4117 ;">
+      Lingkungan membutuhkan perlindungan dari kita semua.<br> Dengan menjaga kebersihan,
+      mengurangi sampah, serta memanfaatkan sumber daya alam secara bijak.
+    </p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Card 1 -->
+    <div class="col-md-3 d-flex">
+  <div class="card position-relative w-100 h-100">
+        <img src="ask.jpg" class="card-img-top">
+        <button class="donate-btn">Donate Now</button>
+        <div class="card-body">
+          <h5>Free Kegiatan Lingkungan</h5>
+          <p style="color: #fff;">Mengajak masyarakat untuk peduli lingkungan sekitar.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3 d-flex">
+  <div class="card position-relative w-100 h-100">
+        <img src="anak miskin.jpg" class="card-img-top">
+        <button class="donate-btn">Donate Now</button>
+        <div class="card-body">
+          <h5>Bangun sekolah untuk anak miskin</h5>
+          <p style="color: #fff;">Membantu pendidikan anak-anak kurang mampu.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-3 d-flex">
+  <div class="card position-relative w-100 h-100">
+        <img src="alpower.jpg" class="card-img-top">
+        <button class="donate-btn">Donate Now</button>
+        <div class="card-body">
+          <h5>Bangun sistem air bersih</h5>
+          <p style="color: #fff;">Menyediakan air bersih untuk masyarakat.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-3 d-flex">
+  <div class="card position-relative w-100 h-100">
+        <img src="bom.jpg" class="card-img-top">
+        <button class="donate-btn">Donate Now</button>
+        <div class="card-body">
+          <h5>Kegiatan lingkungan pertama</h5>
+          <p style="color: #fff;">Berpartisipasi dalam aksi peduli lingkungan.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container py-5 position-relative" id="events">
+
+  <div class="section-title">
+    <small class="text-success">UPCOMING EVENTS</small>
+    <h4 style="color:#0b4117 ;"><b>Bantulah hari ini karena besok mungkin Anda <br>yang membutuhkan lebih banyak bantuan!</b></h4>
+  </div>
+
+  <!-- arrow -->
+  <button class="arrow-btn arrow-left">
+    <i class="bi bi-chevron-left"></i>
+  </button>
+
+  <button class="arrow-btn arrow-right">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+
+  <div class="row g-4">
+
+    <!-- CARD 1 -->
+    <div class="col-md-4">
+      <div class="card event-card">
+        <div class="event-img">
+          <img src="karnaval.jpg">
+          <div class="date-badge">18 Feb, 2023</div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <i class="bi bi-geo-alt"></i> Grand Mahal, Dubai  &nbsp;
+            <i class="bi bi-clock"></i> 10.00 AM
+          </div>
+          <h5>Cara Membuat Rencana Kebersihan</h5>
+          <p>Menyusun rencana kebersihan dapat dimulai dengan memahami area yang perlu dibersihkan.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="col-md-4">
+      <div class="card event-card">
+        <div class="event-img">
+          <img src="stop.jpg">
+          <div class="date-badge">18 Feb, 2023</div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <i class="bi bi-geo-alt"></i> Grand Mahal, Dubai  &nbsp;
+            <i class="bi bi-clock"></i> 10.00 AM
+          </div>
+          <h5>Cara Membuat Rencana Kebersihan</h5>
+          <p>Menyusun rencana kebersihan dapat dimulai dengan memahami area yang perlu dibersihkan.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="col-md-4">
+      <div class="card event-card">
+        <div class="event-img">
+          <img src="demo.jpg">
+          <div class="date-badge">18 Feb, 2023</div>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <i class="bi bi-geo-alt"></i> Grand Mahal, Dubai  &nbsp;
+            <i class="bi bi-clock"></i> 10.00 AM
+          </div>
+          <h5>Cara Membuat Rencana Kebersihan</h5>
+          <p>Menyusun rencana kebersihan dapat dimulai dengan memahami area yang perlu dibersihkan.</p>
+          <button class="btn btn-read btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ln-section-wrapper" id="blog">
+    <div class="container">
+        
+        <div class="ln-header-group">
+            <span class="ln-tagline">LATEST NEWS & BLOG</span>
+            <h2 class="ln-main-title">Help today because tomorrow you may be the one who needs more helping!</h2>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="ln-card-item">
+                    <div class="ln-img-container">
+                        <img src="kebakaran.jpg" alt="News">
+                        <div class="ln-img-overlay">
+                            <span><i class="far fa-clock me-1"></i> Dec 01, 2024</span>
+                            <span>
+                                <i class="far fa-heart"></i> 3 &nbsp;
+                                <i class="far fa-comment"></i> 0
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ln-content-body">
+                        <a href="#" class="ln-category-label">Save The Topic Forests</a>
+                        <h3 class="ln-post-title">Save The Topic Forests</h3>
+                        <p class="ln-post-excerpt">Lorem ipsum dolor sit amet consectetur adip sed eiusmod amet consectetur adip sed eiusmod tempor.</p>
+                        <a href="#" class="ln-btn-action">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="ln-card-item">
+                    <div class="ln-img-container">
+                        <img src="kincir.jpg" alt="News">
+                        <div class="ln-img-overlay">
+                            <span><i class="far fa-clock me-1"></i> Dec 01, 2024</span>
+                            <span><i class="far fa-heart"></i> 5 &nbsp; <i class="far fa-comment"></i> 2</span>
+                        </div>
+                    </div>
+                    <div class="ln-content-body">
+                        <a href="#" class="ln-category-label">Nature Preservation</a>
+                        <h3 class="ln-post-title">Save The Topic Forests</h3>
+                        <p class="ln-post-excerpt">Lorem ipsum dolor sit amet consectetur adip sed eiusmod amet consectetur adip sed eiusmod tempor.</p>
+                        <a href="#" class="ln-btn-action">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="ln-card-item">
+                    <div class="ln-img-container">
+                        <img src="awan.jpg" alt="News">
+                        <div class="ln-img-overlay">
+                            <span><i class="far fa-clock me-1"></i> Dec 01, 2024</span>
+                            <span><i class="far fa-heart"></i> 12 &nbsp; <i class="far fa-comment"></i> 4</span>
+                        </div>
+                    </div>
+                    <div class="ln-content-body">
+                        <a href="#" class="ln-category-label">Environment</a>
+                        <h3 class="ln-post-title">Save The Topic Forests</h3>
+                        <p class="ln-post-excerpt">Lorem ipsum dolor sit amet consectetur adip sed eiusmod amet consectetur adip sed eiusmod tempor.</p>
+                        <a href="#" class="ln-btn-action">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="ln-card-item">
+                    <div class="ln-img-container">
+                        <img src="hutan.jpg" alt="News">
+                        <div class="ln-img-overlay">
+                            <span><i class="far fa-clock me-1"></i> Dec 01, 2024</span>
+                            <span><i class="far fa-heart"></i> 8 &nbsp; <i class="far fa-comment"></i> 1</span>
+                        </div>
+                    </div>
+                    <div class="ln-content-body">
+                        <a href="#" class="ln-category-label">Climate Change</a>
+                        <h3 class="ln-post-title">Save The Topic Forests</h3>
+                        <p class="ln-post-excerpt">Lorem ipsum dolor sit amet consectetur adip sed eiusmod amet consectetur adip sed eiusmod tempor.</p>
+                        <a href="#" class="ln-btn-action">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════ GALLERY ═══════════════════════════════════ -->
+<section class="container py-5" id="galery">
+  <div class="text-center mb-4">
+    <small class="text-success">OUR WORK</small>
+    <h3>We consider environment welfare</h3>
+    <p class="text-muted">Lorem ipsum dolor sit amet consectetur</p>
+  </div>
+<div class="gallery">
+
+  <div class="item">
+    <a href="kegiatan1.jpg" class="popup">
+      <img src="kegiatan2.jpg">
+      <div class="overlay">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <div class="text">Beauty Of Life</div>
+    </a>
+  </div>
+
+  <div class="item big">
+    <a href="kegiatan3.jpg" class="popup">
+      <img src="kegiatan4.jpg">
+      <div class="overlay">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <div class="text">Beauty Of Life</div>
+    </a>
+  </div>
+
+  <div class="item">
+    <a href="kegiatan11.jpg" class="popup">
+      <img src="kegiatan6.jpg">
+      <div class="overlay">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <div class="text">Beauty Of Life</div>
+    </a>
+  </div>
+
+  <div class="item">
+    <a href="kegiatan5.jpg" class="popup">
+      <img src="kegiatan8.jpg">
+      <div class="overlay">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <div class="text">Beauty Of Life</div>
+    </a>
+  </div>
+
+  <div class="item">
+    <a href="kegiatan9.jpg" class="popup">
+      <img src="kegiatan10.jpg">
+      <div class="overlay">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <div class="text">Beauty Of Life</div>
+    </a>
+  </div>
+
+</div>
+<script>
+$(document).ready(function() {
+  $('.popup').magnificPopup({
+    type: 'image',
+    gallery: {
+      enabled: true
+    }
+  });
+});
+</script>
+
+<!-- ═══════════════════════════════════ VOLUNTEER ═══════════════════════════════════ -->
+<section id="volunteer" id="volunteer">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <!-- Volunteer Grid -->
+      <div class="col-lg-5">
+        <div class="vol-grid">
+          <div class="vol-card">
+            <img src="lanang3.jpg" alt="Michel" />
+            <div class="vol-card-info">
+              <h6>Michel Brown</h6>
+              <small>Communicator</small>
+            </div>
+            <div class="vol-social">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+          <div class="vol-card">
+            <img src="lanang1.jpg" alt="Michel 2" />
+            <div class="vol-card-info">
+              <h6>Michel Brown</h6>
+              <small>Communicator</small>
+            </div>
+            <div class="vol-social">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+          <div class="vol-card">
+            <img src="lanang4.jpg" alt="Michel 3" />
+            <div class="vol-card-info">
+              <h6>Michel Brown</h6>
+              <small>Communicator</small>
+            </div>
+            <div class="vol-social">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+          <div class="vol-card">
+            <img src="lanang2.jpg" alt="Michel 4" />
+            <div class="vol-card-info">
+              <h6>Michel Brown</h6>
+              <small>Communicator</small>
+            </div>
+            <div class="vol-social">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Volunteer Text -->
+      <div class="col-lg-7">
+        <div class="volunteer-left">
+          <p class="section-label">Become a Volunteer?</p>
+          <h2 class="section-title mb-3">Kami Peduli terhadap Kesejahteraan Lingkungan</h2>
+          <p class="text-muted mb-4">Kami berkomitmen untuk menjaga keseimbangan alam melalui tindakan nyata seperti mengurangi limbah, menghemat sumber daya, serta mendukung berbagai upaya pelestarian lingkungan.</p>
+          <ul class="vol-check list-unstyled mb-4">
+            <li><i class="bi bi-check-circle-fill text-success"></i> Kami bersahabat satu sama lain.</li>
+            <li><i class="bi bi-check-circle-fill text-success"></i> Jika Anda bergabung dengan kami, kami akan memberikan pelatihan gratis kepada Anda.</li>
+            <li><i class="bi bi-check-circle-fill text-success"></i> Ini adalah kesempatan untuk membantu lingkungan yang miskin.</li>
+            <li><i class="bi bi-check-circle-fill text-success"></i> Tidak ada tujuan persyaratan.</li>
+            <li><i class="bi bi-check-circle-fill text-success"></i> Bergabung sepenuhnya gratis. Kami tidak membutuhkan uang sepeser pun dari Anda.</li>
+          </ul>
+          <a href="#" class="btn btn-green px-5">Join With Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- !-- ═══════════════════════════════════ footer ═══════════════════════════════════ -->
+<footer class="container-fluid text-light" style="background-color: #1a1a1a;">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <div class="col-lg-3 col-md-6">
+        <h5 class="fw-bold mb-4">Newsletter</h5>
+        <p class="text-secondary small mb-4">
+          Dolor amet sit justo amet elit clita ipsum elit est Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+        <div class="d-flex align-items-center bg-white p-1" style="border-radius: 2px;">
+          <input type="email" class="form-control border-0 shadow-none small" placeholder="Enter your email" style="background: transparent;">
+          <button class="btn btn-success fw-bold btn-sm px-3" style="background-color: #5cb85c; border: none; border-radius: 2px;">Signup</button>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-lg-flex justify-content-center">
+        <div>
+          <h5 class="fw-bold mb-4">Our Services</h5>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2">▶ Ocean Turtle</li>
+            <li class="mb-2">▶ White Tiger</li>
+            <li class="mb-2">▶ Social Ecology</li>
+            <li class="mb-2">▶ Loneliness</li>
+            <li class="mb-2">▶ Beauty of Life</li>
+            <li class="mb-2">▶ Present for You</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 d-lg-flex justify-content-center">
+        <div>
+          <h5 class="fw-bold mb-4">Volunteer</h5>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2">▶ Karen Dawson</li>
+            <li class="mb-2">▶ Jack Gilmore</li>
+            <li class="mb-2">▶ Michael Linden</li>
+            <li class="mb-2">▶ Simon Greer</li>
+            <li class="mb-2">▶ Natalie Channing</li>
+            <li class="mb-2">▶ Caroline Strong</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" id="contact">
+        <h5 class="fw-bold mb-4">Our Gallery</h5>
+        <div class="row g-2" style="max-width: 300px;"> <div class="col-4"><img src="our6.jpg" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;"></div>
+          <div class="col-4"><img src="our1.jpg" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;"></div>
+          <div class="col-4"><img src="our2.jpg" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;"></div>
+          <div class="col-4"><img src="our3.jpg" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;"></div>
+          <div class="col-4"><img src="our4.jpg" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;"></div>
+          <div class="col-4"><img src="our5.jpg" class="img-fluid" style="aspect-ratio: 1/1; object-fit: cover;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+
+    <div class="row align-items-center text-secondary small">
+      <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+        <span class="text-success"></span> <strong>Environs</strong> &copy; 2026
+      </div>
+      <div class="col-md-4 text-center mb-3 mb-md-0">
+        <div class="d-flex justify-content-center gap-3">
+          <i class="bi bi-facebook"></i> <i class="bi bi-twitter"></i> <i class="bi bi-instagram"></i> <i class="bi bi-pinterest"></i> <i class="bi bi-linkedin"></i>
+        </div>
+      </div>
+      <div class="col-md-4 text-center text-md-end">
+        <div class="d-flex justify-content-center justify-content-md-end gap-3">
+          <i class="bi bi-heart-fill"></i> <i class="bi bi-twitter"></i> <i class="bi bi-globe"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+  <i class="bi bi-arrow-up"></i>
+</a>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+    const cards = document.querySelectorAll('.card-container');
+
+    cards.forEach(card => {
+      const img = card.querySelector('.img-zoom');
+    
+      card.addEventListener('mouseenter', () => {
+        img.classList.add('zoomed');
+      });
+    
+      card.addEventListener('mouseleave', () => {
+        img.classList.remove('zoomed');
+      });
+    });
+    
+    document.querySelectorAll('.volunteer-card').forEach(card => {
+        card.addEventListener('click', function() {
+            document.querySelectorAll('.volunteer-card').forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+            this.classList.toggle('active');
+        });
+    });
+    window.onscroll = function() {
+            var header = document.getElementById("mainHeader");
+            if (window.pageYOffset > 20) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        };
+    </script>
+</body>
+</html>
